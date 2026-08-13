@@ -34,12 +34,17 @@ https://github.com/users/CaioVKodato/projects/6
 ```text
 .
 ├── src/
-│   └── graphql_client.py   # Auth + cliente HTTP GraphQL
-├── data/                   # CSVs da mineração (repos)
-├── snapshots/              # Snapshots CSV do GitHub Projects
-├── docs/                   # Relatório e documentação
+│   ├── github/
+│   │   ├── config.py       # Token (.env) e constantes
+│   │   ├── rate_limit.py   # Leitura e espera do rateLimit
+│   │   ├── retry.py        # Backoff / retry HTTP
+│   │   └── client.py       # POST GraphQL
+│   └── __main__.py         # CLI de teste
+├── data/
+├── snapshots/
+├── docs/
 ├── requirements.txt
-├── .env.example            # Modelo de variáveis de ambiente
+├── .env.example
 └── README.md
 ```
 
@@ -53,11 +58,13 @@ https://github.com/users/CaioVKodato/projects/6
    ```bash
    pip install -r requirements.txt
    ```
-5. Teste a autenticação GraphQL (Issue #3):
+5. Teste autenticação + rateLimit (Issues #3 e #4):
    ```bash
-   python -m src.graphql_client
+   python -m src
    ```
-   Se estiver ok, aparece: `Autenticação OK. Usuário autenticado: <seu-user>`.
+   Se estiver ok, aparece o login e o `rateLimit` (remaining / resetAt).
+   O cliente faz retry automático em erros de rede/5xx/429 e pausa se o
+   `remaining` estiver baixo.
 
 ## Commits e Issues
 
