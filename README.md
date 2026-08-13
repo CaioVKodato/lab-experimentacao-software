@@ -33,20 +33,31 @@ https://github.com/users/CaioVKodato/projects/6
 
 ```text
 .
-├── src/          # Scripts de coleta GraphQL
-├── data/         # CSVs da mineração (repos)
-├── snapshots/    # Snapshots CSV do GitHub Projects
-├── docs/         # Relatório e documentação
-├── .env.example  # Modelo de variáveis de ambiente
+├── src/
+│   └── graphql_client.py   # Auth + cliente HTTP GraphQL
+├── data/                   # CSVs da mineração (repos)
+├── snapshots/              # Snapshots CSV do GitHub Projects
+├── docs/                   # Relatório e documentação
+├── requirements.txt
+├── .env.example            # Modelo de variáveis de ambiente
 └── README.md
 ```
 
 ## Setup rápido (S01)
 
 1. Clone o repositório.
-2. Crie um Personal Access Token no GitHub.
+2. Crie um [Personal Access Token](https://github.com/settings/tokens) no GitHub
+   (classic com `public_repo`, ou fine-grained com leitura de metadados públicos).
 3. Copie `.env.example` para `.env` e preencha `GITHUB_TOKEN`.
-4. (Em breve) rode o script de coleta em `src/`.
+4. Instale as dependências:
+   ```bash
+   pip install -r requirements.txt
+   ```
+5. Teste a autenticação GraphQL (Issue #3):
+   ```bash
+   python -m src.graphql_client
+   ```
+   Se estiver ok, aparece: `Autenticação OK. Usuário autenticado: <seu-user>`.
 
 ## Commits e Issues
 
