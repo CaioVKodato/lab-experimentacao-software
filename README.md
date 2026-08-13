@@ -39,14 +39,42 @@ https://github.com/users/CaioVKodato/projects/6
 │   │   ├── rate_limit.py   # Leitura e espera do rateLimit
 │   │   ├── retry.py        # Backoff / retry HTTP
 │   │   └── client.py       # POST GraphQL
-│   └── __main__.py         # CLI de teste
+│   ├── collect.py          # Coleta os 100 repos e gera data/repositories.csv
+│   └── __main__.py         # CLI de teste de autenticação
 ├── data/
+│   └── repositories.csv    # Saída da coleta (100 repositórios, gerado por collect.py)
 ├── snapshots/
 ├── docs/
 ├── requirements.txt
 ├── .env.example
 └── README.md
 ```
+
+## Coleta de dados (Issue #5 e #6)
+
+Execute o script abaixo para coletar os **100 repositórios mais populares** do GitHub e salvar os resultados em `data/repositories.csv`:
+
+```bash
+python -m src.collect
+```
+
+### Colunas do CSV
+
+| Coluna | RQ | Descrição |
+|---|---|---|
+| `name` | — | `owner/repo` |
+| `stars` | — | Número de estrelas |
+| `created_at` | RQ01 | Data de criação (ISO-8601) |
+| `age_days` | RQ01 | Idade em dias |
+| `pushed_at` | RQ04 | Data do último push (ISO-8601) |
+| `days_since_push` | RQ04 | Dias desde o último push |
+| `merged_prs` | RQ02 | Total de pull requests aceitas (merged) |
+| `releases` | RQ03 | Total de releases |
+| `closed_issues` | RQ06 | Issues fechadas |
+| `open_issues` | RQ06 | Issues abertas |
+| `total_issues` | RQ06 | Total de issues |
+| `closed_ratio` | RQ06 | Razão issues fechadas / total |
+| `language` | RQ05/RQ07 | Linguagem primária |
 
 ## Setup rápido (S01)
 
