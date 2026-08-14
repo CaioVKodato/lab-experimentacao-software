@@ -6,9 +6,14 @@ Campos coletados:
   RQ01 - age_days       : dias desde createdAt
   RQ02 - merged_prs     : total de pull requests aceitas (merged)
   RQ03 - releases       : total de releases
-  RQ04 - days_since_push: dias desde pushedAt (último push de código)
-  RQ05 - language       : linguagem primária
-  RQ06 - closed_ratio   : closedIssues / (closedIssues + openIssues)
+  RQ04 - days_since_push: dias desde pushedAt (último push de código).
+                          Issue #8: pushedAt (atividade git), não updatedAt
+                          (metadados/estrelas). Ver docs/validacao_rq04_rq06.md
+  RQ05 - language       : linguagem primária (primaryLanguage.name).
+                          Fonte de "mais populares": GitHub Octoverse 2025
+                          (Issue #9 confirma a mesma referência)
+  RQ06 - closed_ratio   : closedIssues / (closedIssues + openIssues);
+                          GraphQL issues não inclui PRs; 0.0 se total = 0
   RQ07 - cruzamento RQ02/03/04 por linguagem (feito na análise, dados aqui)
 
 Uso:
