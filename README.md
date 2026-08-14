@@ -45,10 +45,29 @@ https://github.com/users/CaioVKodato/projects/6
 │   └── repositories.csv    # Saída da coleta (100 repositórios, gerado por collect.py)
 ├── snapshots/
 ├── docs/
+│   ├── validacao_rq01_rq03.md
+│   └── validacao_rq04_rq06.md
+├── validate_rq01_rq03.py
+├── validate_rq04_rq06.py
 ├── requirements.txt
 ├── .env.example
 └── README.md
 ```
+
+## Validação das fatias (S01)
+
+Cada integrante valida os campos da sua parte em uma amostra de 5–10 repositórios **antes** de tratar a coleta dos 100 como fechada.
+
+```bash
+python validate_rq01_rq03.py   # Issue #7 — RQ01–RQ03
+python validate_rq04_rq06.py   # Issue #8 — RQ04–RQ06
+```
+
+Documentação das conferências: `docs/validacao_rq01_rq03.md` e `docs/validacao_rq04_rq06.md`.
+
+**RQ04:** métrica = `pushedAt` (não `updatedAt`).  
+**RQ05:** métrica = `primaryLanguage`; fonte de ranking proposta = [GitHub Octoverse 2025](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) (Issue #9).  
+**RQ06:** `issues(states: CLOSED|OPEN)` no GraphQL (sem pull requests).
 
 ## Coleta de dados (Issue #5 e #6)
 
