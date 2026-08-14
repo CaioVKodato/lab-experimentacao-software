@@ -40,10 +40,11 @@ https://github.com/users/CaioVKodato/projects/6
 │   │   ├── retry.py        # Backoff / retry HTTP
 │   │   └── client.py       # POST GraphQL
 │   ├── collect.py          # Coleta os 100 repos e gera data/repositories.csv
+│   ├── snapshot.py         # Snapshot GraphQL do GitHub Projects → CSV
 │   └── __main__.py         # CLI de teste de autenticação
 ├── data/
 │   └── repositories.csv    # Saída da coleta (100 repositórios, gerado por collect.py)
-├── snapshots/
+├── snapshots/              # Fotos do board (um CSV por data/sprint)
 ├── docs/
 │   ├── validacao_rq01_rq03.md
 │   └── validacao_rq04_rq06.md
@@ -95,11 +96,41 @@ python -m src.collect
 | `closed_ratio` | RQ06 | Razão issues fechadas / total |
 | `language` | RQ05/RQ07 | Linguagem primária |
 
+## Snapshot do Kanban (fechamento de sprint / semanal)
+
+O GitHub Projects v2 não guarda histórico de coluna consultável via API. O script abaixo
+tira uma foto do board (Issue, Status, Assignee) e grava um CSV **novo** em `snapshots/`.
+Não sobrescreva arquivos antigos — a série é a base dos Labs 04 e 05.
+
+```bash
+python -m src.snapshot
+python -m src.snapshot --sprint Lab01S01
+```
+
+Saída: `snapshots/lab01s01-AAAA-MM-DD.csv`.
+
+O token precisa do escopo `read:project`. Rode no fim de cada sprint e a cada aula.
+
+### Colunas do snapshot
+
+| Coluna | Descrição |
+|---|---|
+| `snapshot_at` | Data/hora da foto (fuso do computador) |
+| `sprint` | Ex.: Lab01S01 |
+| `issue_number` | Número da Issue no repositório |
+| `title` | Título do card |
+| `status` | Coluna do board (Backlog, To Do, Doing, Review, Done) |
+| `assignees` | Responsáveis (separados por `;`) |
+| `state` | OPEN ou CLOSED |
+| `labels` | Labels da Issue |
+| `url` | Link da Issue |
+
 ## Setup rápido (S01)
 
 1. Clone o repositório.
 2. Crie um [Personal Access Token](https://github.com/settings/tokens) no GitHub
-   (classic com `public_repo`, ou fine-grained com leitura de metadados públicos).
+   (classic: `public_repo` **e** `read:project` para o snapshot do Kanban;
+   ou fine-grained com leitura de metadados públicos + Projects Read).
 3. Copie `.env.example` para `.env` e preencha `GITHUB_TOKEN`.
 4. Instale as dependências:
    ```bash
