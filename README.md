@@ -41,6 +41,7 @@ https://github.com/users/CaioVKodato/projects/6
 │   │   └── client.py       # POST GraphQL
 │   ├── collect.py          # Coleta os 100 repos e gera data/repositories.csv
 │   ├── snapshot.py         # Snapshot GraphQL do GitHub Projects → CSV
+│   ├── validate.py         # Roda as duas fatias de validação (#7 e #8)
 │   └── __main__.py         # CLI de teste de autenticação
 ├── data/
 │   └── repositories.csv    # Saída da coleta (100 repositórios, gerado por collect.py)
@@ -58,6 +59,12 @@ https://github.com/users/CaioVKodato/projects/6
 ## Validação das fatias (S01)
 
 Cada integrante valida os campos da sua parte em uma amostra de 5–10 repositórios **antes** de tratar a coleta dos 100 como fechada.
+
+```bash
+python -m src.validate
+```
+
+Isso executa, nesta ordem, as Issues #7 e #8:
 
 ```bash
 python validate_rq01_rq03.py   # Issue #7 — RQ01–RQ03
