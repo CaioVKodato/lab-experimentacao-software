@@ -34,21 +34,21 @@ https://github.com/users/CaioVKodato/projects/6
 ```text
 .
 ├── src/
-│   ├── github/
-│   │   ├── config.py       # Token (.env) e constantes
-│   │   ├── rate_limit.py   # Leitura e espera do rateLimit
-│   │   ├── retry.py        # Backoff / retry HTTP
-│   │   └── client.py       # POST GraphQL
-│   ├── collect.py          # Coleta os 100 repos e gera data/repositories.csv
+│   ├── github/             # Auth, retry, rateLimit, cliente GraphQL
+│   ├── collect/            # Coleta paginada (S01=100, S02=1000) → CSV
+│   │   ├── query.py        # Query GraphQL
+│   │   ├── transform.py    # Nó API → linha CSV (métricas RQs)
+│   │   ├── fetch.py        # Paginação
+│   │   ├── export.py       # Escrita CSV
+│   │   └── __main__.py     # CLI (--n, --out)
 │   ├── snapshot.py         # Snapshot GraphQL do GitHub Projects → CSV
 │   ├── validate.py         # Roda as duas fatias de validação (#7 e #8)
 │   └── __main__.py         # CLI de teste de autenticação
 ├── data/
-│   └── repositories.csv    # Saída da coleta (100 repositórios, gerado por collect.py)
+│   ├── repositories.csv           # S01 — 100 repositórios
+│   └── repositories_top1000.csv   # S02 — 1000 repositórios
 ├── snapshots/              # Fotos do board (um CSV por data/sprint)
 ├── docs/
-│   ├── validacao_rq01_rq03.md
-│   └── validacao_rq04_rq06.md
 ├── validate_rq01_rq03.py
 ├── validate_rq04_rq06.py
 ├── requirements.txt
@@ -77,12 +77,22 @@ Documentação das conferências: `docs/validacao_rq01_rq03.md` e `docs/validaca
 **RQ05:** métrica = `primaryLanguage`; fonte de ranking proposta = [GitHub Octoverse 2025](https://github.blog/news-insights/octoverse/octoverse-a-new-developer-joins-github-every-second-as-ai-leads-typescript-to-1/) (Issue #9).  
 **RQ06:** `issues(states: CLOSED|OPEN)` no GraphQL (sem pull requests).
 
-## Coleta de dados (Issue #5 e #6)
+## Coleta de dados (S01: 100 | S02: 1000)
 
-Execute o script abaixo para coletar os **100 repositórios mais populares** do GitHub e salvar os resultados em `data/repositories.csv`:
+Pacote modular `src/collect/` (query, transform, paginação, CSV).  
+A Search API limita cada query a **1000** hits; nós nulos são descartados e a
+coleta abre novas janelas (`stars:<mínimo`) até completar **1000 válidos**.
 
 ```bash
+# S02 — 1000 repos → data/repositories_top1000.csv
 python -m src.collect
+python -m src.collect --n 1000
+
+# S01 — 100 repos → data/repositories.csv
+python -m src.collect --n 100
+
+# Caminho customizado
+python -m src.collect --n 1000 --out data/repositories_top1000.csv
 ```
 
 ### Colunas do CSV
