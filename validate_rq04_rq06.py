@@ -38,8 +38,8 @@ def _days_since(iso_date: str) -> int:
     return (datetime.now(timezone.utc) - dt).days
 
 
-def _closed_ratio(closed: int, total: int) -> float:
-    return round(closed / total, 4) if total > 0 else 0.0
+def _closed_ratio(closed: int, total: int) -> float | None:
+    return round(closed / total, 4) if total > 0 else None
 
 
 def _build_query() -> str:

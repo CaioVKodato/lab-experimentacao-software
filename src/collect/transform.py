@@ -14,9 +14,9 @@ def days_since(iso_date: str | None) -> int | None:
     return (datetime.now(timezone.utc) - dt).days
 
 
-def closed_ratio(closed: int, total: int) -> float:
-    """Razão issues fechadas / total; 0.0 se não houver issues."""
-    return round(closed / total, 4) if total > 0 else 0.0
+def closed_ratio(closed: int, total: int) -> float | None:
+    """Razão issues fechadas / total; ausente quando não há issues."""
+    return round(closed / total, 4) if total > 0 else None
 
 
 def repository_to_row(node: dict[str, Any]) -> dict[str, Any]:
