@@ -9,6 +9,7 @@ Curso: Engenharia de Software
 
 - [CaioVKodato](https://github.com/CaioVKodato)
 - [Henrique-volponi](https://github.com/Henrique-volponi)
+- Jonas Martins (Membro 3 — hipóteses S02 #23–#25)
 
 ## GitHub Projects
 
@@ -49,6 +50,9 @@ https://github.com/users/CaioVKodato/projects/6
 │   └── repositories_top1000.csv   # S02 — 1000 repositórios
 ├── snapshots/              # Fotos do board (um CSV por data/sprint)
 ├── docs/
+│   ├── relatorio_lab01_s02.md     # 1ª versão do relatório (Issue #26)
+│   ├── validacao_s02_*.md         # Consistência dos 1000 repos
+│   └── Hipóteses Informais — *    # Fontes #23–#25
 ├── validate_rq01_rq03.py
 ├── validate_rq04_rq06.py
 ├── requirements.txt
@@ -112,6 +116,15 @@ python -m src.collect --n 1000 --out data/repositories_top1000.csv
 | `total_issues` | RQ06 | Total de issues |
 | `closed_ratio` | RQ06 | Razão issues fechadas / total |
 | `language` | RQ05/RQ07 | Linguagem primária |
+
+## Relatório (S02)
+
+Primeira versão (esqueleto + hipóteses + resultados descritivos):
+
+- [`docs/relatorio_lab01_s02.md`](docs/relatorio_lab01_s02.md) — Issue **#26**
+
+Hipóteses informais (fontes): Issues **#23–#25**.  
+Validações dos 1000 repos: Issues **#20–#22** (`docs/validacao_s02_*.md`).
 
 ## Snapshot do Kanban (fechamento de sprint / semanal)
 
