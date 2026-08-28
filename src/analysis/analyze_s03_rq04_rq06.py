@@ -16,8 +16,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 DATA_PATH = "data/repositories_top1000.csv"
-FIG_DIR = "docs/figures"
-DOC_PATH = "docs/s03/analise_s03_rq04_rq06.md"
+FIG_DIR = "docs/s03/jonas"
+DOC_PATH = "docs/s03/jonas/analise_rq04_rq06.md"
 
 os.makedirs(FIG_DIR, exist_ok=True)
 os.makedirs(os.path.dirname(DOC_PATH), exist_ok=True)
@@ -137,8 +137,8 @@ Hipóteses de referência: #24 (RQ04, RQ05), #25 (RQ03, RQ06, nota RQ07)
 
 **Leitura vs. hipótese informal (#24):** a hipótese de que sistemas populares são atualizados com frequência se confirma — mediana de {rq04_stats['median']:.0f} dia(s) desde o último push, com 75% da amostra (Q3) recebendo commit em até {rq04_stats['q3']:.0f} dias. A distribuição no gráfico é fortemente concentrada perto de zero, com uma cauda longa de poucos repositórios sem atividade recente.
 
-![RQ04 histograma](../figures/rq04_days_since_push_hist.png)
-![RQ04 boxplot](../figures/rq04_days_since_push_box.png)
+![RQ04 histograma](rq04_days_since_push_hist.png)
+![RQ04 boxplot](rq04_days_since_push_box.png)
 
 ## RQ05 — Linguagem primária
 
@@ -148,7 +148,7 @@ Top 10 linguagens na amostra:
 
 **Leitura vs. hipótese informal (#24):** confirma a hipótese — Python, TypeScript e JavaScript concentram a maior parte da amostra e aparecem entre as linguagens mais citadas no GitHub Octoverse 2025 (referência adotada no laboratório desde a S02).
 
-![RQ05 linguagens](../figures/rq05_language_bar.png)
+![RQ05 linguagens](rq05_language_bar.png)
 
 ## RQ06 — Razão de issues fechadas / total
 
@@ -160,7 +160,7 @@ Repositórios excluídos por não terem nenhuma issue (`total_issues = 0`): {rq0
 
 **Leitura vs. hipótese informal (#25):** confirma a hipótese de alta taxa de resolução de issues — mediana de {rq06_stats['median']*100:.1f}% de issues fechadas, com Q1 já em {rq06_stats['q1']*100:.1f}%.
 
-![RQ06 histograma](../figures/rq06_closed_ratio_hist.png)
+![RQ06 histograma](rq06_closed_ratio_hist.png)
 """
     with open(DOC_PATH, "w", encoding="utf-8") as f:
         f.write(content)
