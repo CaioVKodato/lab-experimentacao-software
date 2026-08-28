@@ -92,12 +92,12 @@ Cruzar RQ02, RQ03 e RQ04 **por linguagem**. Os campos já estão no CSV (`langua
 
 **Pergunta:** stars correlacionam com `%` de issues fechadas?  
 **Hipótese:** não.  
-**Achado (n = 89 nos top 100):** Spearman ρ ≈ **−0,05** (correlação nula). Ver `docs/rq_extra_stars_vs_closed_ratio.md`.
+**Achado (n = 89 nos top 100):** Spearman ρ ≈ **−0,05** (correlação nula). Ver `docs/s01/caio/rq_extra_stars_vs_closed_ratio.md`.
 
 Fontes originais das hipóteses:  
-`docs/Hipóteses Informais — RQ01 e RQ02`,  
-`docs/Hipóteses Informais — RQ04 e RQ05`,  
-`docs/Hipóteses Informais — RQ03, RQ06 e nota da RQ07`.
+`docs/s02/jonas/hipoteses_rq01_rq02.md`,  
+`docs/s02/jonas/hipoteses_rq04_rq05.md`,  
+`docs/s02/jonas/hipoteses_rq03_rq06_rq07.md`.
 
 ---
 
@@ -148,9 +148,9 @@ A Search API limita cada query a **1000 hits**; alguns nós vêm nulos. A coleta
 
 | Fatia | Issue | Artefatos |
 |---|---|---|
-| RQ01–RQ02 | #20 | `src/analysis/validate_s02_rq01_rq02.py`, `docs/validacao_s02_rq01_rq02.md` |
-| RQ04–RQ05 | #21 | `src/analysis/validate_s02_rq04_rq05.py`, `docs/validacao_s02_rq04_rq05.md` |
-| RQ03–RQ06 | #22 | `src/analysis/validate_s02_rq03_rq06.py`, `docs/validacao_s02_rq03_rq06.md` |
+| RQ01–RQ02 | #20 | `src/analysis/validate_s02_rq01_rq02.py`, `docs/s02/henrique/validacao_s02_rq01_rq02.md` |
+| RQ04–RQ05 | #21 | `src/analysis/validate_s02_rq04_rq05.py`, `docs/s02/henrique/validacao_s02_rq04_rq05.md` |
+| RQ03–RQ06 | #22 | `src/analysis/validate_s02_rq03_rq06.py`, `docs/s02/henrique/validacao_s02_rq03_rq06.md` |
 
 Critério de outliers: Tukey (1,5 × IQR).
 
@@ -253,10 +253,10 @@ A S01 já possui `snapshots/lab01s01-2026-08-13.csv`.
 | CSV S02 | `data/repositories_top1000.csv` |
 | Coleta | `src/collect/` |
 | Cliente GraphQL | `src/github/` |
-| Validações S02 | `docs/validacao_s02_*.md` |
-| Hipóteses (fontes) | `docs/Hipóteses Informais — *` |
-| Octoverse | `docs/fonte_linguagens_rq07.md` |
-| RQ extra | `docs/rq_extra_stars_vs_closed_ratio.md` |
+| Validações S02 | `docs/s02/henrique/validacao_s02_*.md` |
+| Hipóteses (fontes) | `docs/s02/jonas/hipoteses_*.md` |
+| Octoverse | `docs/s03/henrique/fonte_linguagens_rq07.md` |
+| RQ extra | `docs/s01/caio/rq_extra_stars_vs_closed_ratio.md` |
 
 ---
 

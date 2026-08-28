@@ -12,8 +12,8 @@ Hipóteses de referência: #24 (RQ04, RQ05), #25 (RQ03, RQ06, nota RQ07)
 
 **Leitura vs. hipótese informal (#24):** a hipótese de que sistemas populares são atualizados com frequência se confirma — mediana de 1 dia(s) desde o último push, com 75% da amostra (Q3) recebendo commit em até 48 dias. A distribuição no gráfico é fortemente concentrada perto de zero, com uma cauda longa de poucos repositórios sem atividade recente.
 
-![RQ04 histograma](../figures/rq04_days_since_push_hist.png)
-![RQ04 boxplot](../figures/rq04_days_since_push_box.png)
+![RQ04 histograma](rq04_days_since_push_hist.png)
+![RQ04 boxplot](rq04_days_since_push_box.png)
 
 ## RQ05 — Linguagem primária
 
@@ -32,7 +32,7 @@ Top 10 linguagens na amostra:
 
 **Leitura vs. hipótese informal (#24):** confirma a hipótese — Python, TypeScript e JavaScript concentram a maior parte da amostra e aparecem entre as linguagens mais citadas no GitHub Octoverse 2025 (referência adotada no laboratório desde a S02).
 
-![RQ05 linguagens](../figures/rq05_language_bar.png)
+![RQ05 linguagens](rq05_language_bar.png)
 
 ## RQ06 — Razão de issues fechadas / total
 
@@ -44,4 +44,4 @@ Repositórios excluídos por não terem nenhuma issue (`total_issues = 0`): 43
 
 **Leitura vs. hipótese informal (#25):** confirma a hipótese de alta taxa de resolução de issues — mediana de 87.5% de issues fechadas, com Q1 já em 70.4%.
 
-![RQ06 histograma](../figures/rq06_closed_ratio_hist.png)
+![RQ06 histograma](rq06_closed_ratio_hist.png)

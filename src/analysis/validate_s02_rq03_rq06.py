@@ -4,7 +4,7 @@ from pathlib import Path
 from statistics import median
 
 INPUT = Path("data/repositories_top1000.csv")
-OUTPUT = Path("docs/validacao_s02_rq03_rq06.md")
+OUTPUT = Path("docs/s02/henrique/validacao_s02_rq03_rq06.md")
 
 
 def describe(items):

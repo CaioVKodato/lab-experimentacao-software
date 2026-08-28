@@ -17,8 +17,8 @@ from statistics import median
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 DATA_PATH = ROOT_DIR / "data" / "repositories_top1000.csv"
-DOCS_DIR = ROOT_DIR / "docs"
-OUTPUT_MD = DOCS_DIR / "analise_s03_rq01_rq03.md"
+DOCS_DIR = ROOT_DIR / "docs" / "s03" / "caio"
+OUTPUT_MD = DOCS_DIR / "analise_rq01_rq03.md"
 
 FIG_RQ01 = DOCS_DIR / "analise_s03_rq01_idade.png"
 FIG_RQ02 = DOCS_DIR / "analise_s03_rq02_prs.png"

@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 DATA_DIR = ROOT_DIR / "data"
-DOCS_DIR = ROOT_DIR / "docs"
+DOCS_DIR = ROOT_DIR / "docs" / "s01" / "caio"
 
 
 def load_filtered(csv_path: Path) -> tuple[list[float], list[float], list[str]]:

@@ -25,7 +25,7 @@ import numpy as np
 
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent
 DATA_DIR  = ROOT_DIR / "data"
-DOCS_DIR  = ROOT_DIR / "docs"
+DOCS_DIR  = ROOT_DIR / "docs" / "s03" / "henrique"
 
 CSV_FILE = DATA_DIR / "repositories_top1000.csv"
 
@@ -105,7 +105,7 @@ def plot(table: list[dict], out_dir: Path) -> None:
     langs = [r["language"] for r in filtered]
     colors = ["steelblue" if r["popular"] else "lightcoral" for r in filtered]
 
-    fig, axes = plt.subplots(1, 3, figsize=(16, 6))
+    fig, axes = plt.subplots(1, 3, figsize=(20, 9))
     fig.suptitle("RQ07 — Medianas por linguagem primária (≥5 repos)\n"
                  "Azul = top-10 Octoverse 2025 | Vermelho = demais", fontsize=13)
 
@@ -125,7 +125,7 @@ def plot(table: list[dict], out_dir: Path) -> None:
     fig.tight_layout()
     out = out_dir / "rq07_por_linguagem.png"
     out.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out, dpi=150, bbox_inches="tight")
+    fig.savefig(out, dpi=200, bbox_inches="tight")
     plt.close(fig)
     print(f"[rq07] grafico salvo em {out}")
 
